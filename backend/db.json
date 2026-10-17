@@ -1,12 +1,12 @@
 {
-  "items": [
+  "movies": [
     {
-      "id": "starter-1",
-      "title": "Замените демонстрационную запись",
-      "category": "starter",
-      "value": 0,
-      "isActive": true
+      "id": "1",
+      "title": "Начало",
+      "director": "Кристофер Нолан",
+      "year": 2010,
+      "rating": 8.8,
+      "watched": true
     }
   ]
 }
-

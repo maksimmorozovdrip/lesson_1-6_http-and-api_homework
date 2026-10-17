@@ -1,5 +1,25 @@
-// Стартовая точка домашней работы.
-// Спроектируйте модель ресурса, запросы и состояния самостоятельно.
+const API_URL = "http://localhost:3000/movies"
 
-console.log('API storefront starter is ready');
 
+loadMovies();
+
+
+
+
+
+
+
+
+async function loadMovies() {
+    const response = await fetch(API_URL);
+    if (!response.ok){
+throw new Error("Данные не были получены");
+    }
+    const apiData = await response.json();
+
+renderMovies(apiData);
+}
+
+function renderMovies(movies) {
+    console.log(movies);
+}

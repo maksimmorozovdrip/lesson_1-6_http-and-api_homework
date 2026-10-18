@@ -185,48 +185,48 @@ button:disabled {
   line-height: 1.5;
 }
 
-.status--loading {
-  border-color: #c8c1ff;
-  background: #f2f0ff;
-}
-
-.status--success {
-  border-color: #a8ded3;
-  background: #edf9f6;
-}
-
-.status--error {
-  border-color: #f0b5ae;
-  color: var(--color-danger);
-  background: #fff2f0;
-}
-
 .collection {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
 }
 
-.card {
+.movie-card {
+  display: grid;
+  gap: 6px;
   min-width: 0;
   padding: 18px;
   border: 1px solid var(--color-line);
   border-radius: 18px;
   background: var(--color-surface);
+  overflow-wrap: anywhere;
 }
 
-.card__title {
-  margin: 0 0 12px;
-  overflow-wrap: anywhere;
+.movie-card__title {
+  margin: 0 0 6px;
   font-size: 1.12rem;
 }
 
-.card__meta {
-  display: grid;
-  gap: 7px;
+.movie-card__director,
+.movie-card__year,
+.movie-card__rating {
   margin: 0;
   color: var(--color-muted);
   line-height: 1.45;
+}
+
+.movie-card__badge {
+  justify-self: start;
+  margin-top: 6px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: #eaecf0;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.movie-card__badge--watched {
+  background: #d1fadf;
 }
 
 .entry-form {
@@ -245,6 +245,12 @@ button:disabled {
   font-weight: 740;
 }
 
+.field__label--checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .field__control {
   width: 100%;
   min-height: 46px;
@@ -255,16 +261,11 @@ button:disabled {
   background: var(--color-surface);
 }
 
-textarea.field__control {
-  min-height: 108px;
-  resize: vertical;
-}
-
-.entry-form__hint {
+.entry-form__status {
+  min-height: 1.5em;
   margin: 0;
   color: var(--color-muted);
-  font-size: 0.9rem;
-  line-height: 1.55;
+  font-size: 0.92rem;
 }
 
 .entry-form__actions {
@@ -321,4 +322,3 @@ textarea.field__control {
     width: 100%;
   }
 }
-

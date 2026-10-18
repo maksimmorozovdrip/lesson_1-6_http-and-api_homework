@@ -17,7 +17,8 @@
         <p class="page-header__eyebrow">ДЗ 6 · HTTP и API</p>
         <h1 class="page-header__title">Витрина фильмов</h1>
         <p class="page-header__lead">
-          Каталог фильмов: список загружается из собственного REST API.
+          Каталог фильмов: список загружается из собственного REST API, новые
+          фильмы добавляются через форму.
         </p>
       </div>
     </header>
@@ -61,6 +62,26 @@
             <label class="field__label" for="entry-title">Название</label>
             <input class="field__control" id="entry-title" name="title" type="text" minlength="2" required />
           </div>
+          <div class="field">
+            <label class="field__label" for="entry-director">Режиссёр</label>
+            <input class="field__control" id="entry-director" name="director" type="text" minlength="2" required />
+          </div>
+          <div class="field">
+            <label class="field__label" for="entry-year">Год выхода</label>
+            <input class="field__control" id="entry-year" name="year" type="number" min="1888" max="2100" step="1" required />
+          </div>
+          <div class="field">
+            <label class="field__label" for="entry-rating">Оценка (0–10)</label>
+            <input class="field__control" id="entry-rating" name="rating" type="number" min="0" max="10" step="0.1" required />
+          </div>
+          <div class="field">
+            <label class="field__label field__label--checkbox" for="entry-watched">
+              <input id="entry-watched" name="watched" type="checkbox" />
+              Уже посмотрел(а)
+            </label>
+          </div>
+
+          <p class="entry-form__status" data-ui="form-status" role="status" aria-live="polite"></p>
 
           <div class="entry-form__actions">
             <button class="button button--primary" type="submit" data-action="submit">

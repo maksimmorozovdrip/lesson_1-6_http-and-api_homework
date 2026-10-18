@@ -6,6 +6,11 @@ const statusTitleElement = statusElement.querySelector(".status__title");
 const statusTextElement = statusElement.querySelector(".status__text");
 const collectionElement = document.querySelector('[data-ui="collection"]');
 const reloadButton = document.querySelector('[data-action="reload"]');
+const formElement = document.querySelector('[data-form="entry"]');
+const submitButton = document.querySelector('[data-action="submit"]');
+const formStatusElement = document.querySelector('[data-ui="form-status"]');
+
+let isSubmitting = false;
 
 function showStatus(title, text) {
   statusTitleElement.textContent = title;
@@ -79,6 +84,56 @@ async function loadMovies() {
   }
 }
 
+async function createMovie(movie) {
+  const response = await fetch(API_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(movie),
+  });
+  if (!response.ok) {
+    throw new Error(`Ошибка HTTP: ${response.status}`);
+  }
+  return response.json();
+}
+
+function readMovieFromForm() {
+  const formData = new FormData(formElement);
+  return {
+    title: formData.get("title").trim(),
+    director: formData.get("director").trim(),
+    year: Number(formData.get("year")),
+    rating: Number(formData.get("rating")),
+    watched: formData.has("watched"),
+  };
+}
+
+function setFormStatus(text) {
+  formStatusElement.textContent = text;
+}
+
+async function handleSubmit(event) {
+  event.preventDefault();
+  if (isSubmitting) {
+    return;
+  }
+  isSubmitting = true;
+  submitButton.disabled = true;
+  setFormStatus("Отправляем…");
+  try {
+    await createMovie(readMovieFromForm());
+    formElement.reset();
+    setFormStatus("Фильм добавлен.");
+    await loadMovies();
+  } catch (error) {
+    console.error(error);
+    setFormStatus("Не удалось сохранить фильм. Данные в форме сохранены, попробуйте ещё раз.");
+  } finally {
+    isSubmitting = false;
+    submitButton.disabled = false;
+  }
+}
+
 endpointElement.textContent = API_URL;
 reloadButton.addEventListener("click", loadMovies);
+formElement.addEventListener("submit", handleSubmit);
 loadMovies();

@@ -322,3 +322,34 @@ textarea.field__control {
   }
 }
 
+.status[hidden] {
+  display: none;
+}
+
+.movie-card {
+  display: grid;
+  gap: 6px;
+  padding: 16px;
+  border: 1px solid #d0d5dd;
+  border-radius: 12px;
+  overflow-wrap: anywhere;
+}
+
+.movie-card__title,
+.movie-card__director,
+.movie-card__year,
+.movie-card__rating {
+  margin: 0;
+}
+
+.movie-card__badge {
+  justify-self: start;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: #eaecf0;
+  font-size: 0.875rem;
+}
+
+.movie-card__badge--watched {
+  background: #d1fadf;
+}

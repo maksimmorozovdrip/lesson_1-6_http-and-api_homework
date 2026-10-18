@@ -353,3 +353,16 @@ textarea.field__control {
 .movie-card__badge--watched {
   background: #d1fadf;
 }
+
+.field__label--checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.entry-form__status {
+  min-height: 1.5em;
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.92rem;
+}
